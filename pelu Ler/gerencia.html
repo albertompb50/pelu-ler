@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerencia y Contabilidad | Peluquería Ler</title>
+  <link rel="stylesheet" href="style new.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a class="brand-logo-link" href="gerencia.html" aria-label="Portal de gerencia y contabilidad">
+          <img src="img/logo sin fondo.png" alt="Logo Peluquería Ler" />
+        </a>
+        <a class="brand-text-link" href="index.html">Peluquería Ler</a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="trabajadores.html">Personal</a></li>
+          <li><a href="agenda.html">Agenda</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell container">
+    <section class="page-intro">
+      <p class="eyebrow">Gerencia / Contabilidad</p>
+      <h1>Panel de control de la empresa</h1>
+      <p>Acceso seguro para gerencia y contabilidad: ver pagos, clientes atendidos, servicios realizados y el rendimiento de cada trabajador.</p>
+    </section>
+
+    <section class="portal-grid">
+      <article class="portal-card">
+        <h2>Acceso seguro</h2>
+        <form id="gerenciaLogin" class="portal-form">
+          <label>Correo institucional o WhatsApp
+            <input id="gerenciaUser" type="text" placeholder="gerencia@peluquerialer.com o 3001005975" required />
+          </label>
+          <label>Contraseña
+            <input id="gerenciaPass" type="password" placeholder="Contraseña segura" required />
+          </label>
+          <button type="submit" class="btn-primary btn-full">Entrar</button>
+        </form>
+        <p id="mensajeGerencia" class="status-text">Solo personal autorizado puede acceder a este panel.</p>
+      </article>
+
+      <article class="portal-card">
+        <h2>Resumen del negocio</h2>
+        <div id="panelGerencia" class="panel-box hidden">
+          <div class="stats-grid">
+            <article class="stat-card"><strong id="clientesDia">0</strong><span>Clientes hoy</span></article>
+            <article class="stat-card"><strong id="ventasDia">$0</strong><span>Ventas del día</span></article>
+            <article class="stat-card"><strong id="cortesDia">0</strong><span>Cortes realizados</span></article>
+            <article class="stat-card"><strong id="pagosPendientes">0</strong><span>Pagos pendientes</span></article>
+          </div>
+          <h3>Movimientos recientes</h3>
+          <ul id="movimientos" class="mini-list"></ul>
+        </div>
+        <div id="panelDemoGerencia" class="panel-box hidden"></div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    function normalizarValor(valor) {
+      return String(valor || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9@.]/g, '')
+        .replace(/^57/, '');
+    }
+
+    const gerenciaLogin = document.getElementById('gerenciaLogin');
+    const mensajeGerencia = document.getElementById('mensajeGerencia');
+    const panelGerencia = document.getElementById('panelGerencia');
+    const panelDemoGerencia = document.getElementById('panelDemoGerencia');
+
+    gerenciaLogin.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const user = document.getElementById('gerenciaUser').value.trim();
+      const pass = document.getElementById('gerenciaPass').value.trim();
+      const userNormalizado = normalizarValor(user);
+      const card = gerenciaLogin.closest('.portal-card');
+
+      mensajeGerencia.classList.remove('error', 'success');
+      card.classList.remove('shake');
+
+      if ((userNormalizado === 'gerencia@peluquerialer.com' || userNormalizado === '3001005975') && pass === 'admin2026') {
+        mensajeGerencia.textContent = 'Acceso autorizado. Mostrando control financiero.';
+        mensajeGerencia.classList.add('success');
+        panelDemoGerencia.classList.add('hidden');
+        panelGerencia.classList.remove('hidden');
+
+        document.getElementById('clientesDia').textContent = '18';
+        document.getElementById('ventasDia').textContent = '$1.450.000';
+        document.getElementById('cortesDia').textContent = '9';
+        document.getElementById('pagosPendientes').textContent = '2';
+
+        const movimientos = [
+          'Corte clásico - $45.000',
+          'Coloración - $80.000',
+          'Peinado evento - $60.000',
+          'Uñas premium - $35.000'
+        ];
+        const lista = document.getElementById('movimientos');
+        lista.innerHTML = '';
+        movimientos.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          lista.appendChild(li);
+        });
+      } else {
+        mensajeGerencia.textContent = 'Credenciales inválidas. Use gerencia@peluquerialer.com o 3001005975 / admin2026.';
+        mensajeGerencia.classList.add('error');
+        card.classList.add('shake');
+      }
+    });
+  </script>
+</body>
+</html>

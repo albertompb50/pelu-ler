@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Peluquería Ler </title>
+    <link rel="stylesheet" href="style new.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand">
+                <a class="brand-logo-link" href="gerencia.html" aria-label="Portal de gerencia y contabilidad">
+                    <img src="img/logo sin fondo.png" alt="Logo Peluquería Ler">
+                </a>
+                <a class="brand-text-link" href="trabajadores.html">Peluquería Ler</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero-section">
+            <div class="hero-copy">
+                <p class="eyebrow">Peluquería de belleza</p>
+                <h1>Tu estilo, tu identidad</h1>
+                <p class="hero-text">Cortes modernos, coloración, uñas y un trato cercano para que te sientas hermosa cada día.</p>
+                <div class="hero-actions">
+                    <a href="servicios.html" class="btn-primary">Ver servicios</a>
+                    <a href="agenda.html" class="btn-secondary">Agendar cita</a>
+                </div>
+            </div>
+            <div class="hero-media" aria-hidden="true">
+                <div class="hero-media__photo"></div>
+            </div>
+        </section>
+
+        <section class="feature-grid container">
+            <article class="feature-card">
+                <h2>Estilo personalizado</h2>
+                <p>Te asesoramos para que el look se adapte a tu rostro, personalidad y rutina.</p>
+            </article>
+            <article class="feature-card">
+                <h2>Atención cercana</h2>
+                <p>Trabajamos con calma, detalle y una experiencia agradable desde la primera visita.</p>
+            </article>
+            <article class="feature-card">
+                <h2>Reserva rápida</h2>
+                <p>Agenda tu cita en minutos y recibe una atención cómoda y puntual.</p>
+            </article>
+        </section>
+
+        <section id="agenda" class="booking-section container">
+            <div class="booking-copy">
+                <p class="eyebrow">Agenda</p>
+                <h2>Reserva tu cita</h2>
+                <p>Completa el formulario para solicitar tu turno. Te responderemos con la disponibilidad y el servicio recomendado.</p>
+                <ul class="mini-list">
+                    <li>Horarios entre 9:00 a.m. y 7:00 p.m.</li>
+                    <li>Atención para cortes, coloración y cuidado de uñas</li>
+                    <li>Confirmación por WhatsApp o llamada</li>
+                </ul>
+            </div>
+
+            <form id="homeAgendaForm" class="booking-card" onsubmit="return false;">
+                <label>
+                    Nombre
+                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                </label>
+                <label>
+                    Teléfono
+                    <input type="tel" name="telefono" placeholder="300 100 5975" required>
+                </label>
+                <label>
+                    Servicio
+                    <select name="servicio">
+                        <option>Corte de cabello</option>
+                        <option>Coloración</option>
+                        <option>Peinado especial</option>
+                        <option>Uñas</option>
+                    </select>
+                </label>
+                <label>
+                    Fecha y hora preferida
+                    <input type="datetime-local" name="fecha" required>
+                </label>
+                <label>
+                    Comentarios
+                    <textarea name="comentarios" rows="4" placeholder="Cuéntanos qué deseas probar o si tienes alguna preferencia"></textarea>
+                </label>
+                <button type="submit" class="btn-primary btn-full">Enviar solicitud</button>
+            </form>
+        </section>
+
+        <section id="contacto" class="contact-section container">
+            <article class="contact-card">
+                <span class="contact-icon">📞</span>
+                <div>
+                    <span class="contact-label">Número de teléfono</span>
+                    <strong>(387) 5969</strong>
+                </div>
+            </article>
+            <article class="contact-card">
+                <span class="contact-icon">📍</span>
+                <div>
+                    <span class="contact-label">Ubicación</span>
+                    <strong>Calle 165 #8H-59</strong>
+                </div>
+            </article>
+            <a class="contact-card contact-card--cta" href="https://wa.me/573001005975" target="_blank" rel="noopener noreferrer">
+                <span class="contact-icon">💬</span>
+                <div>
+                    <span class="contact-label">WhatsApp</span>
+                    <strong>(+57) 300 100 5975</strong>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <script>
+      const HOME_AGENDA_NUMBER = '3001005975';
+      const HOME_AGENDA_EMAIL = 'albertompb50@gmail.com';
+
+      document.getElementById('homeAgendaForm')?.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const nombre = form.querySelector('input[name="nombre"]')?.value || '';
+        const telefono = form.querySelector('input[name="telefono"]')?.value || '';
+        const servicio = form.querySelector('select[name="servicio"]')?.value || '';
+        const fecha = form.querySelector('input[name="fecha"]')?.value || '';
+        const comentarios = form.querySelector('textarea[name="comentarios"]')?.value || '';
+
+        const texto = [
+          'Nueva solicitud de agenda',
+          'Nombre: ' + nombre,
+          'Teléfono: ' + telefono,
+          'Servicio: ' + servicio,
+          'Fecha y hora: ' + fecha,
+          'Comentarios: ' + comentarios
+        ].join('\n');
+
+        const whatsappUrl = 'https://wa.me/57' + HOME_AGENDA_NUMBER + '?text=' + encodeURIComponent(texto);
+        const emailUrl = 'mailto:' + HOME_AGENDA_EMAIL + '?subject=' + encodeURIComponent('Solicitud de cita - Peluquería Ler') + '&body=' + encodeURIComponent(texto);
+
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        window.location.href = emailUrl;
+      });
+    </script>
+</body>
+</html>

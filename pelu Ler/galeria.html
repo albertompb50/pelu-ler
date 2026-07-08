@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Peluquería Ler</title>
+    <link rel="stylesheet" href="style new.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style new.css">
+
+</head>
+<body>
+     <header class="site-header">
+        <div class="header-inner">
+            <div class="brand">
+                <a class="brand-logo-link" href="gerencia.html" aria-label="Portal de gerencia y contabilidad">
+                    <img src="img/logo sin fondo.png" alt="Logo Peluquería Ler">
+                </a>
+                <a class="brand-text-link" href="trabajadores.html">Peluquería Ler</a>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell container">
+        <section class="page-intro">
+            <p class="eyebrow">Galería</p>
+            <h1>Inspiración para tu próximo cambio de look</h1>
+            <p>Explora algunos de los estilos y detalles que ofrecemos en el salón, desde cortes modernos hasta tonos suaves y peinados especiales.</p>
+        </section>
+
+        <section class="gallery-grid">
+            <article class="gallery-card"><div class="gallery-thumb thumb-one"></div><h2>Look natural</h2><p>Cortes limpios y texturas delicadas.</p></article>
+            <article class="gallery-card"><div class="gallery-thumb thumb-two"></div><h2>Color suave</h2><p>Tonificaciones y brillo para un resultado luminoso.</p></article>
+            <article class="gallery-card"><div class="gallery-thumb thumb-three"></div><h2>Peinado especial</h2><p>Estilos pensados para eventos o una salida especial.</p></article>
+            <article class="gallery-card"><div class="gallery-thumb thumb-four"></div><h2>Detalle de uñas</h2><p>Manicure y cuidado fino para completar tu imagen.</p></article>
+        </section>
+
+        <section class="info-banner">
+            <h2>¿Quieres ver más?</h2>
+            <p>Síguenos en Instagram y TikTok para descubrir nuevas ideas y promociones del salón. También puedes reservar tu cita con WhatsApp o correo.</p>
+            <a href="agenda.html" class="btn-primary">Reservar cita</a>
+        </section>
+
+        <section class="booking-section">
+            <article class="booking-copy">
+                <p class="eyebrow">Agenda rápida</p>
+                <h2>Reserva tu cita desde aquí</h2>
+                <p>Envíamos tu solicitud al WhatsApp 300 100 5975 y también al correo albertompb50@gmail.com.</p>
+            </article>
+
+            <form id="galeriaAgendaForm" class="booking-card" onsubmit="return false;">
+                <label>
+                    Nombre
+                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                </label>
+                <label>
+                    WhatsApp
+                    <input type="tel" name="telefono" placeholder="300 100 5975" required>
+                </label>
+                <label>
+                    Servicio
+                    <select name="servicio">
+                        <option>Corte de cabello</option>
+                        <option>Coloración</option>
+                        <option>Peinado especial</option>
+                        <option>Uñas</option>
+                    </select>
+                </label>
+                <label>
+                    Fecha preferida
+                    <input type="datetime-local" name="fecha" required>
+                </label>
+                <label>
+                    Comentarios
+                    <textarea name="comentarios" rows="4" placeholder="Cuéntanos qué estilo te gustaría probar"></textarea>
+                </label>
+                <button type="submit" class="btn-primary btn-full">Enviar agenda</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+      const GALERIA_NUMBER = '3001005975';
+      const GALERIA_EMAIL = 'albertompb50@gmail.com';
+
+      document.getElementById('galeriaAgendaForm')?.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const nombre = form.querySelector('input[name="nombre"]')?.value || '';
+        const telefono = form.querySelector('input[name="telefono"]')?.value || '';
+        const servicio = form.querySelector('select[name="servicio"]')?.value || '';
+        const fecha = form.querySelector('input[name="fecha"]')?.value || '';
+        const comentarios = form.querySelector('textarea[name="comentarios"]')?.value || '';
+
+        const texto = [
+          'Solicitud de agenda desde Galería',
+          'Nombre: ' + nombre,
+          'WhatsApp: ' + telefono,
+          'Servicio: ' + servicio,
+          'Fecha y hora: ' + fecha,
+          'Comentarios: ' + comentarios
+        ].join('\n');
+
+        const whatsappUrl = 'https://wa.me/57' + GALERIA_NUMBER + '?text=' + encodeURIComponent(texto);
+        const emailUrl = 'mailto:' + GALERIA_EMAIL + '?subject=' + encodeURIComponent('Agenda desde Galería - Peluquería Ler') + '&body=' + encodeURIComponent(texto);
+
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        window.location.href = emailUrl;
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal del personal | Peluquería Ler</title>
+  <link rel="stylesheet" href="style new.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a class="brand-logo-link" href="gerencia.html" aria-label="Portal de gerencia y contabilidad">
+          <img src="img/logo sin fondo.png" alt="Logo Peluquería Ler" />
+        </a>
+        <a class="brand-text-link" href="index.html">Peluquería Ler</a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="agenda.html">Agenda</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell container">
+    <section class="page-intro">
+      <p class="eyebrow">Portal del personal</p>
+      <h1>Inicio de sesión para empleados</h1>
+      <p>Accede con tu correo corporativo de la empresa o WhatsApp para ver tus servicios asignados, tus materiales y la agenda del día.</p>
+    </section>
+
+    <section class="portal-grid">
+      <article class="portal-card">
+        <h2>Ingresar al sistema</h2>
+        <form id="loginForm" class="portal-form">
+          <label>Correo o WhatsApp
+            <input id="usuario" type="text" placeholder="ej. contacto@peluquerialer.com o 3001005975" required />
+          </label>
+          <label>Contraseña
+            <input id="password" type="password" placeholder="Tu contraseña" required />
+          </label>
+          <label class="switch-row">
+            <input type="checkbox" id="rolCheck" />
+            <span>Acceder como administrador/gerencia</span>
+          </label>
+          <button type="submit" class="btn-primary btn-full">Entrar</button>
+        </form>
+        <p id="mensajeLogin" class="status-text">Usa el correo o número registrado por la empresa.</p>
+      </article>
+
+      <article class="portal-card">
+        <h2>Tu panel de trabajo</h2>
+        <div id="panelEmpleado" class="panel-box hidden">
+          <h3 id="bienvenidaTrabajador">Bienvenido</h3>
+          <p id="tipoTrabajo">Tipo de trabajo:</p>
+          <p id="materiales">Materiales asignados:</p>
+          <p id="agenda">Agenda del día:</p>
+          <ul id="listaAgenda" class="mini-list"></ul>
+        </div>
+        <div id="panelDemo" class="panel-box hidden"></div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    function normalizarValor(valor) {
+      return String(valor || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9@.]/g, '')
+        .replace(/^57/, '');
+    }
+
+    const usuarios = {
+      'contacto@peluquerialer.com': {
+        nombre: 'Equipo',
+        rol: 'Trabajador',
+        trabajo: 'Atención general',
+        materiales: ['Tinte', 'Peines', 'Guantes'],
+        agenda: [
+          { hora: '09:00', cliente: 'María López', servicio: 'Corte y peinado' },
+          { hora: '11:30', cliente: 'Daniela Ríos', servicio: 'Coloración' },
+          { hora: '15:00', cliente: 'Sofía Pérez', servicio: 'Peinado especial' }
+        ]
+      },
+      '3001005975': {
+        nombre: 'Carlos',
+        rol: 'Trabajador',
+        trabajo: 'Cortes',
+        materiales: ['Tijeras', 'Cepillo', 'Crema'],
+        agenda: [
+          { hora: '10:00', cliente: 'Laura Gómez', servicio: 'Corte clásico' },
+          { hora: '13:00', cliente: 'Camila Torres', servicio: 'Barba y diseño' },
+          { hora: '16:30', cliente: 'Valentina Ruiz', servicio: 'Diseño moderno' }
+        ]
+      },
+      'gerencia@peluquerialer.com': {
+        nombre: 'Gerencia',
+        rol: 'Gerencia',
+        trabajo: 'Administración',
+        materiales: ['Reportes', 'Control de caja'],
+        agenda: [
+          { hora: '08:30', cliente: 'Revisión de ventas', servicio: 'Control financiero' },
+          { hora: '12:00', cliente: 'Pagos pendientes', servicio: 'Seguimiento' },
+          { hora: '17:00', cliente: 'Clientes del día', servicio: 'Supervisión' }
+        ]
+      }
+    };
+
+    const loginForm = document.getElementById('loginForm');
+    const mensajeLogin = document.getElementById('mensajeLogin');
+    const panelEmpleado = document.getElementById('panelEmpleado');
+    const panelDemo = document.getElementById('panelDemo');
+    const bienvenida = document.getElementById('bienvenidaTrabajador');
+    const tipoTrabajo = document.getElementById('tipoTrabajo');
+    const materiales = document.getElementById('materiales');
+    const agenda = document.getElementById('agenda');
+    const listaAgenda = document.getElementById('listaAgenda');
+
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const usuario = document.getElementById('usuario').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const modoGerencia = document.getElementById('rolCheck').checked;
+      const usuarioNormalizado = normalizarValor(usuario);
+      const card = loginForm.closest('.portal-card');
+
+      mensajeLogin.classList.remove('error', 'success');
+      card.classList.remove('shake');
+
+      if (!usuario || !password) {
+        mensajeLogin.textContent = 'Completa tu correo/WhatsApp y tu contraseña.';
+        mensajeLogin.classList.add('error');
+        card.classList.add('shake');
+        return;
+      }
+
+      if (password !== '1234') {
+        mensajeLogin.textContent = 'Contraseña incorrecta. Usa 1234 para la demo.';
+        mensajeLogin.classList.add('error');
+        card.classList.add('shake');
+        return;
+      }
+
+      const cuenta = usuarios[usuarioNormalizado] || usuarios[usuario];
+      if (!cuenta) {
+        mensajeLogin.textContent = 'Usuario no encontrado. Contacta a gerencia.';
+        mensajeLogin.classList.add('error');
+        card.classList.add('shake');
+        return;
+      }
+
+      if (modoGerencia && cuenta.rol !== 'Gerencia') {
+        mensajeLogin.textContent = 'Este acceso es exclusivo para gerencia.';
+        mensajeLogin.classList.add('error');
+        card.classList.add('shake');
+        return;
+      }
+
+      mensajeLogin.textContent = 'Acceso autorizado. Bienvenido al panel de trabajo.';
+      mensajeLogin.classList.add('success');
+      panelDemo.classList.add('hidden');
+      panelEmpleado.classList.remove('hidden');
+      bienvenida.textContent = 'Bienvenido ' + cuenta.nombre;
+      tipoTrabajo.textContent = 'Tipo de trabajo: ' + cuenta.trabajo;
+      materiales.textContent = 'Materiales asignados: ' + cuenta.materiales.join(', ');
+      agenda.textContent = 'Agenda del día:';
+      listaAgenda.innerHTML = '';
+      cuenta.agenda.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = '<strong>' + item.hora + '</strong> — ' + item.cliente + ' — ' + item.servicio;
+        listaAgenda.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>
