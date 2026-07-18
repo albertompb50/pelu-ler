@@ -131,6 +131,25 @@
         </section>
     </main>
 
+    <div class="social-sidebar social-sidebar--open" id="socialSidebar" aria-label="Barra lateral de redes sociales">
+        <button type="button" class="social-sidebar__toggle" id="socialSidebarToggle" aria-expanded="true" aria-label="Ocultar redes sociales">
+            <span>Redes</span>
+            <span class="social-sidebar__chevron">‹</span>
+        </button>
+
+        <div class="social-fixed-bubbles" aria-label="Redes sociales flotantes">
+            <a class="social-bubble instagram" href="https://instagram.com/lapeluquerialer" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-label="Instagram @lapeluquerialer">
+                <img src="img/ig logo.png" alt="Instagram">
+            </a>
+            <a class="social-bubble tiktok" href="https://www.tiktok.com/@.la_pelu_ler" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-label="TikTok @.la_pelu_ler">
+                <img src="img/tik tok.png" alt="TikTok">
+            </a>
+            <a class="social-bubble whatsapp" href="https://wa.me/+573213678042" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-label="WhatsApp +57 321 367 8042">
+                <img src="img/what logo.png" alt="WhatsApp">
+            </a>
+        </div>
+    </div>
+
     <script>
       const HOME_AGENDA_NUMBER = '3001005975';
       const HOME_AGENDA_EMAIL = 'albertompb50@gmail.com';
@@ -159,6 +178,16 @@
 
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         window.location.href = emailUrl;
+      });
+
+      const socialSidebar = document.getElementById('socialSidebar');
+      const socialSidebarToggle = document.getElementById('socialSidebarToggle');
+
+      socialSidebarToggle?.addEventListener('click', function () {
+        socialSidebar?.classList.toggle('social-sidebar--collapsed');
+        const expanded = !socialSidebar?.classList.contains('social-sidebar--collapsed');
+        socialSidebarToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        socialSidebarToggle.setAttribute('aria-label', expanded ? 'Ocultar redes sociales' : 'Mostrar redes sociales');
       });
     </script>
 </body>

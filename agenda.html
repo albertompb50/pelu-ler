@@ -85,6 +85,27 @@
         </section>
     </main>
 
+    <div class="contact-float contact-float--open" id="contactFloat">
+        <button type="button" class="contact-float__toggle" id="contactFloatToggle" aria-expanded="true" aria-label="Ocultar opciones de contacto">
+            <span class="contact-float__icon">💬</span>
+            <span class="contact-float__label">Contacto</span>
+            <span class="contact-float__chevron">‹</span>
+        </button>
+
+        <div class="contact-float__panel" aria-label="Panel de contacto">
+            <p class="contact-float__heading">Escríbenos</p>
+            <a class="contact-float__link" href="https://wa.me/573001005975" target="_blank" rel="noopener noreferrer">
+                WhatsApp 300 100 5975
+            </a>
+            <a class="contact-float__link" href="mailto:albertompb50@gmail.com">
+                Correo albertompb50@gmail.com
+            </a>
+            <a class="contact-float__link contact-float__link--secondary" href="contacto.html">
+                Ver página de contacto
+            </a>
+        </div>
+    </div>
+
     <script>
       const AGENDA_NUMBER = '3001005975';
       const AGENDA_EMAIL = 'albertompb50@gmail.com';
@@ -113,6 +134,18 @@
 
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         window.location.href = emailUrl;
+      });
+
+      const contactFloat = document.getElementById('contactFloat');
+      const contactFloatToggle = document.getElementById('contactFloatToggle');
+
+      contactFloatToggle?.addEventListener('click', function () {
+        contactFloat?.classList.toggle('contact-float--open');
+        contactFloat?.classList.toggle('contact-float--collapsed');
+
+        const expanded = contactFloat?.classList.contains('contact-float--open');
+        contactFloatToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        contactFloatToggle.setAttribute('aria-label', expanded ? 'Ocultar opciones de contacto' : 'Mostrar opciones de contacto');
       });
     </script>
 </body>
