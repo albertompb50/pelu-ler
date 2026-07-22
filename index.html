@@ -65,47 +65,7 @@
             </article>
         </section>
 
-        <section id="agenda" class="booking-section container">
-            <div class="booking-copy">
-                <p class="eyebrow">Agenda</p>
-                <h2>Reserva tu cita</h2>
-                <p>Completa el formulario para solicitar tu turno. Te responderemos con la disponibilidad y el servicio recomendado.</p>
-                <ul class="mini-list">
-                    <li>Horarios entre 9:00 a.m. y 7:00 p.m.</li>
-                    <li>Atención para cortes, coloración y cuidado de uñas</li>
-                    <li>Confirmación por WhatsApp o llamada</li>
-                </ul>
-            </div>
 
-            <form id="homeAgendaForm" class="booking-card" onsubmit="return false;">
-                <label>
-                    Nombre
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
-                </label>
-                <label>
-                    Teléfono
-                    <input type="tel" name="telefono" placeholder="3213678042" required>
-                </label>
-                <label>
-                    Servicio
-                    <select name="servicio">
-                        <option>Corte de cabello</option>
-                        <option>Coloración</option>
-                        <option>Peinado especial</option>
-                        <option>Uñas</option>
-                    </select>
-                </label>
-                <label>
-                    Fecha y hora preferida
-                    <input type="datetime-local" name="fecha" required>
-                </label>
-                <label>
-                    Comentarios
-                    <textarea name="comentarios" rows="4" placeholder="Cuéntanos qué deseas probar o si tienes alguna preferencia"></textarea>
-                </label>
-                <button type="submit" class="btn-primary btn-full">Enviar solicitud</button>
-            </form>
-        </section>
 
         <section id="contacto" class="contact-section container">
             <article class="contact-card">
@@ -151,45 +111,6 @@
         </div>
     </div>
 
-    <script>
-      const HOME_AGENDA_NUMBER = '3213678042';
-      const HOME_AGENDA_EMAIL = 'lapeluquerialer13@gmail.com';
 
-      document.getElementById('homeAgendaForm')?.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const form = event.currentTarget;
-        const nombre = form.querySelector('input[name="nombre"]')?.value || '';
-        const telefono = form.querySelector('input[name="telefono"]')?.value || '';
-        const servicio = form.querySelector('select[name="servicio"]')?.value || '';
-        const fecha = form.querySelector('input[name="fecha"]')?.value || '';
-        const comentarios = form.querySelector('textarea[name="comentarios"]')?.value || '';
-
-        const texto = [
-          'Nueva solicitud de agenda',
-          'Nombre: ' + nombre,
-          'Teléfono: ' + telefono,
-          'Servicio: ' + servicio,
-          'Fecha y hora: ' + fecha,
-          'Comentarios: ' + comentarios
-        ].join('\n');
-
-        const whatsappUrl = 'https://wa.me/57' + HOME_AGENDA_NUMBER + '?text=' + encodeURIComponent(texto);
-        const emailUrl = 'mailto:' + HOME_AGENDA_EMAIL + '?subject=' + encodeURIComponent('Solicitud de cita - Peluquería Ler') + '&body=' + encodeURIComponent(texto);
-
-        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-        window.location.href = emailUrl;
-      });
-
-      const socialSidebar = document.getElementById('socialSidebar');
-      const socialSidebarToggle = document.getElementById('socialSidebarToggle');
-
-      socialSidebarToggle?.addEventListener('click', function () {
-        socialSidebar?.classList.toggle('social-sidebar--collapsed');
-        const expanded = !socialSidebar?.classList.contains('social-sidebar--collapsed');
-        socialSidebarToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        socialSidebarToggle.setAttribute('aria-label', expanded ? 'Ocultar redes sociales' : 'Mostrar redes sociales');
-      });
-    </script>
 </body>
 </html>
