@@ -106,11 +106,18 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
-      const AGENDA_NUMBER = '3213678042';
-      const AGENDA_EMAIL = 'lapeluqueiraler13@gmail.com';
+      const AGENDA_EMAIL = 'lapeluquerialer13@gmail.com';
+      const EMAILJS_SERVICE_ID = 'service_fseyjrr';
+      const EMAILJS_TEMPLATE_ID = 'template_7sv5nnl';
+      const EMAILJS_USER_ID = 'Db9nrcYM-g3Tl3d8i';
 
-      document.getElementById('agendaForm')?.addEventListener('submit', function (event) {
+      emailjs.init('Db9nrcYM-g3Tl3d8i');
+
+      const agendaForm = document.getElementById('agendaForm');
+
+      agendaForm?.addEventListener('submit', function (event) {
         event.preventDefault();
 
         const form = event.currentTarget;
@@ -129,11 +136,39 @@
           'Mensaje: ' + mensaje
         ].join('\n');
 
-        const whatsappUrl = 'https://wa.me/57' + AGENDA_NUMBER + '?text=' + encodeURIComponent(texto);
-        const emailUrl = 'mailto:' + AGENDA_EMAIL + '?subject=' + encodeURIComponent('Agenda de cita - Peluquería Ler') + '&body=' + encodeURIComponent(texto);
+        const payload = {
+          to_email: AGENDA_EMAIL,
+          subject: 'Agenda de cita - Peluquería Ler',
+          message: texto,
+          nombre: nombre,
+          telefono: telefono,
+          servicio: servicio,
+          fecha: fecha,
+          mensaje: mensaje
+        };
 
-        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-        window.location.href = emailUrl;
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Enviando...';
+        }
+
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload)
+          .then(function () {
+            alert('Tu cita se envió correctamente.');
+            form.reset();
+            if (submitButton) {
+              submitButton.textContent = 'Enviar agenda';
+              submitButton.disabled = false;
+            }
+          }, function (error) {
+            console.error('EmailJS error:', error);
+            alert('Hubo un error al enviar el correo. Revisa la configuración de EmailJS.');
+            if (submitButton) {
+              submitButton.textContent = 'Enviar agenda';
+              submitButton.disabled = false;
+            }
+          });
       });
 
       const contactFloat = document.getElementById('contactFloat');
@@ -147,6 +182,7 @@
         contactFloatToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         contactFloatToggle.setAttribute('aria-label', expanded ? 'Ocultar opciones de contacto' : 'Mostrar opciones de contacto');
       });
-    </script>
+     </script>
+    
 </body>
 </html>
