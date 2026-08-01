@@ -413,8 +413,19 @@ button {
 }
 
 .contact-icon {
-    font-size: 1.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    flex-shrink: 0;
     line-height: 1;
+}
+
+.contact-icon img {
+    width: 1.3rem;
+    height: 1.3rem;
+    object-fit: contain;
 }
 
 .contact-label {
@@ -537,30 +548,30 @@ strong {
     gap: 0.55rem;
     padding: 0.95rem 1rem;
     border: none;
-    border-radius: 999px 0 0 999px;
+    border-radius: 450px 0 0 450px;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: #ffffff;
-    font-weight: 700;
+    font-weight: 350;
     cursor: pointer;
     box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
 }
 
 .contact-float__icon {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
 }
 
 .contact-float__chevron {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.45rem;
-    height: 1.45rem;
+    width: 1.25rem;
+    height: 1.25rem;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.18);
 }
 
 .contact-float__panel {
-    width: 260px;
+    width: 130px;
     padding: 1rem;
     border-radius: 24px 0 0 24px;
     background: #ffffff;
@@ -583,7 +594,7 @@ strong {
 .contact-float__heading {
     margin: 0;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 350;
     color: var(--primary-dark);
 }
 
@@ -595,7 +606,7 @@ strong {
     background: #f5fdf7;
     color: var(--primary-dark);
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 350;
     border: 1px solid rgba(0, 151, 57, 0.12);
 }
 
@@ -611,7 +622,7 @@ strong {
 }
 
 .contact-float--collapsed .contact-float__toggle {
-    border-radius: 999px 0 0 999px;
+    border-radius: 450px 0 0 450px;
 }
 
 @media (max-width: 768px) {
@@ -1083,4 +1094,11 @@ strong {
   }
 }
 
-  
+.site-footer {
+    background: #f9f9f9;
+    border-top: 2px solid var(--primary-dark);
+    padding: 2rem 1.25rem;
+    text-align: center;
+    color: #555555;
+    font-size: 0.95rem;
+}
