@@ -305,7 +305,7 @@ button {
     box-shadow: 0 16px 35px rgba(0, 0, 0, 0.05);
 }
 
-.services-center h2 {
+.services-center h3 {
     margin: 0 0 1.25rem;
     font-size: 2rem;
 }
@@ -332,12 +332,12 @@ button {
     background: linear-gradient(135deg, #edc1df 0%, #f7e7f3 100%);
 }
 
-.service-card h3 {
+.service-card h4 {
     margin: 0;
     font-size: 1.08rem;
 }
 
-.gallery-header h3 {
+.gallery-header h4 {
     margin: 0 0 0.35rem;
     font-size: 1.25rem;
 }
@@ -469,10 +469,10 @@ strong {
     animation: fadeSlideIn 0.45s ease both;
 }
 
-.feature-card h2,
-.service-card-page h2,
-.gallery-card h2,
-.contact-panel h2 {
+.feature-card h3,
+.service-card-page h3,
+.gallery-card h3,
+.contact-panel h3 {
     margin-top: 0;
     margin-bottom: 0.35rem;
     font-size: 1.1rem;
@@ -715,7 +715,7 @@ strong {
     padding: 1.25rem;
 }
 
-.portal-card h2 {
+.portal-card h3 {
     margin-top: 0;
     margin-bottom: 0.25rem;
     color: var(--primary-dark);
