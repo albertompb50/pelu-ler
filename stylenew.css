@@ -21,9 +21,7 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-    background:
-        radial-gradient(circle at top, rgba(0, 151, 57, 0.06), transparent 18%),
-        var(--bg);
+    background: var(--bg);
     color: var(--text);
     line-height: 1.6;
     font-family: inherit;
@@ -260,7 +258,7 @@ button {
     width: 100%;
     min-height: 420px;
     border-radius: 32px;
-    background: linear-gradient(135deg, #f0d6e9 0%, #f8f0f6 100%);
+    background: #edf9f0;
     box-shadow: 0 24px 65px rgba(0, 0, 0, 0.08);
     overflow: hidden;
 }
@@ -292,7 +290,7 @@ button {
     padding: 0.9rem 1.2rem;
     border-radius: 999px;
     border: 1px solid var(--primary-dark);
-    background: linear-gradient(135deg, #00b54a 0%, var(--primary) 100%);
+    background: var(--primary);
     color: #ffffff;
     font-weight: 700;
     box-shadow: 0 10px 18px var(--shadow);
@@ -321,15 +319,15 @@ button {
     gap: 1rem;
     padding: 1.35rem;
     border-radius: 24px;
-    background: #fdf7fb;
-    border: 1px solid rgba(180, 94, 140, 0.14);
+    background: #eefaf2;
+    border: 1px solid rgba(0, 109, 39, 0.14);
 }
 
 .card-photo {
     width: 72px;
     height: 72px;
     border-radius: 20px;
-    background: linear-gradient(135deg, #edc1df 0%, #f7e7f3 100%);
+    background: #e9f9ef;
 }
 
 .service-card h4 {
@@ -381,9 +379,43 @@ button {
 .contact-section {
     display: grid;
     gap: 1rem;
-    padding: 3rem 1.25rem 4rem;
+    padding: 2.2rem 1.5rem 2.4rem;
     max-width: 1100px;
     margin: 0 auto;
+    background: linear-gradient(135deg, rgba(0, 151, 57, 0.12) 0%, rgba(0, 109, 39, 0.18) 100%);
+    border: 1px solid rgba(0, 109, 39, 0.22);
+    border-radius: 32px;
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+    color: var(--primary-dark);
+}
+
+.contact-section .contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(0, 109, 39, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.contact-section .contact-ws {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(0, 109, 39, 0.8);
+    font-weight: 700;
+}
+
+.contact-section strong {
+    display: block;
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: var(--primary-dark);
 }
 
 .contact-card {
@@ -526,7 +558,7 @@ strong {
     min-height: 180px;
     border-radius: 18px;
     margin-bottom: 0.85rem;
-    background: linear-gradient(135deg, #f0d6e9 0%, #f5efe8 50%, #d8e3e0 100%);
+    background: linear-gradient(135deg, #dff7e7 0%, #edf9f0 50%, #d8efe1 100%);
     overflow: hidden;
 }
 
@@ -603,16 +635,16 @@ strong {
     align-items: center;
     padding: 0.85rem 1rem;
     border-radius: 18px;
-    background: #f5fdf7;
+    background: #eafaf1;
     color: var(--primary-dark);
     text-decoration: none;
     font-weight: 350;
-    border: 1px solid rgba(0, 151, 57, 0.12);
+    border: 1px solid rgba(0, 109, 39, 0.18);
 }
 
 .contact-float__link:hover,
 .contact-float__link:focus {
-    background: linear-gradient(135deg, #e5f7e9 0%, #d6f0e0 100%);
+    background: linear-gradient(135deg, #d9f3e2 0%, #cfeee0 100%);
 }
 
 .contact-float__link--secondary {
@@ -645,9 +677,9 @@ strong {
     object-fit: cover;
 }
 
-.thumb-two { background: linear-gradient(135deg, #ffd7ea 0%, #fff5d6 50%, #dbe7ff 100%); }
-.thumb-three { background: linear-gradient(135deg, #efe2ff 0%, #ffeef4 50%, #dff5f2 100%); }
-.thumb-four { background: linear-gradient(135deg, #e5f6df 0%, #fff6dd 50%, #f0e3ff 100%); }
+.thumb-two { background: linear-gradient(135deg, #dff7e7 0%, #ecfaf1 50%, #d5f0de 100%); }
+.thumb-three { background: linear-gradient(135deg, #dff4e6 0%, #ebf9ee 50%, #d8f0e4 100%); }
+.thumb-four { background: linear-gradient(135deg, #dff5e8 0%, #edf9f1 50%, #d7f0de 100%); }
 
 .info-banner {
     margin-top: 1rem;
@@ -787,7 +819,7 @@ strong {
 }
 
 .panel-box {
-    background: linear-gradient(135deg, rgba(0, 151, 57, 0.08), rgba(255,255,255,1));
+    background: #f5fbf7;
     border: 1px solid rgba(0, 109, 39, 0.18);
     border-radius: 22px;
     padding: 1rem;
@@ -805,7 +837,7 @@ strong {
 }
 
 .stat-card {
-    background: linear-gradient(145deg, #ffffff, #f2fff6);
+    background: #f8fff9;
     border: 1px solid rgba(0, 109, 39, 0.18);
     border-radius: 18px;
     padding: 0.9rem;
@@ -1046,7 +1078,7 @@ strong {
   padding: 0.9rem 1rem;
   border: none;
   border-radius: 999px 0 0 999px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: var(--primary);
   color: #ffffff;
   font-weight: 700;
   cursor: pointer;
