@@ -21,7 +21,14 @@
                 </a>
                 <a class="brand-text-link" href="trabajadores.html">Peluquería Ler</a>
             </div>
-            <nav class="main-nav">
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="main-nav" id="mainNav">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="servicios.html">Servicios</a></li>
@@ -69,5 +76,23 @@
             <a href="agenda.html" class="btn-primary">Reservar ahora</a>
         </section>
     </main>
+    <script>
+      const navToggle = document.querySelector('.nav-toggle');
+      const mainNav = document.getElementById('mainNav');
+
+      navToggle?.addEventListener('click', function () {
+        const isOpen = mainNav.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+      });
+
+      mainNav?.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          mainNav.classList.remove('is-open');
+          navToggle?.setAttribute('aria-expanded', 'false');
+          navToggle?.setAttribute('aria-label', 'Abrir menú');
+        });
+      });
+    </script>
 </body>
 </html>
