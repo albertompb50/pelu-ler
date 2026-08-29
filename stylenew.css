@@ -1136,3 +1136,30 @@ strong {
     color: #555555;
     font-size: 0.95rem;
 }
+
+.contenedor-mapa {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.mapa-iframe {
+    display: block;
+    width: 100%;
+    height: clamp(220px, 28vw, 420px);
+    min-height: 220px;
+    border: 0;
+    border-radius: 14px;
+    margin-top: 0.8rem;
+}
+
+@media (max-width: 520px) {
+    .contenedor-mapa {
+        width: 100%;
+    }
+
+    .mapa-iframe {
+        height: 260px;
+    }
+}
