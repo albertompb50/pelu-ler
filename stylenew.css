@@ -1309,8 +1309,9 @@ strong {
   .social-sidebar {
     top: auto;
     bottom: 1rem;
-    right: 1rem;
+        right: 0;
     align-items: flex-end;
+        padding-right: 0;
   }
 
   .social-sidebar__toggle {
