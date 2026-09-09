@@ -82,92 +82,30 @@
             <a href="agenda.html" class="btn-primary">Reservar cita</a>
         </section>
 
-        <section class="booking-section">
-            <article class="booking-copy">
-                <p class="eyebrow">Agenda rápida</p>
-                <h3>Reserva tu cita desde aquí</h3>
-                <p>Envíamos tu solicitud al WhatsApp 321 367 8042 y también al correo lapeluquerialer13@gmail.com.</p>
-            </article>
-
-            <form id="galeriaAgendaForm" class="booking-card" onsubmit="return false;">
-                <label>
-                    Nombre
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
-                </label>
-                <label>
-                    WhatsApp
-                    <input type="tel" name="telefono" placeholder="321 367 8042" required>
-                </label>
-                <label>
-                    Servicio
-                    <select name="servicio">
-                        <option>Corte de cabello</option>
-                        <option>Coloración</option>
-                        <option>Peinado especial</option>
-                        <option>Uñas</option>
-                    </select>
-                </label>
-                <label>
-                    Fecha preferida
-                    <input type="datetime-local" name="fecha" required>
-                </label>
-                <label>
-                    Comentarios
-                    <textarea name="comentarios" rows="4" placeholder="Cuéntanos qué estilo te gustaría probar"></textarea>
-                </label>
-                <button type="submit" class="btn-primary btn-full">Enviar agenda</button>
-            </form>
-        </section>
+       
     </main>
+<footer class="site-footer">
+ <p>&copy; 2013-2026 La Peluquería Ler. Todos los derechos reservados.</p>
+</footer>
 
-    <script>
-      const navToggle = document.querySelector('.nav-toggle');
-      const mainNav = document.getElementById('mainNav');
+<script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.getElementById('mainNav');
 
-      navToggle?.addEventListener('click', function () {
+    navToggle?.addEventListener('click', function () {
         const isOpen = mainNav.classList.toggle('is-open');
         navToggle.setAttribute('aria-expanded', String(isOpen));
         navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
-      });
+    });
 
-      mainNav?.querySelectorAll('a').forEach(function (link) {
+    mainNav?.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
-          mainNav.classList.remove('is-open');
-          navToggle?.setAttribute('aria-expanded', 'false');
-          navToggle?.setAttribute('aria-label', 'Abrir menú');
+            mainNav.classList.remove('is-open');
+            navToggle?.setAttribute('aria-expanded', 'false');
+            navToggle?.setAttribute('aria-label', 'Abrir menú');
         });
-      });
-    </script>
-
-    <script>
-      const GALERIA_NUMBER = '3213678042';
-      const GALERIA_EMAIL = 'lapeluquerialer13@gmail.com';
-
-      document.getElementById('galeriaAgendaForm')?.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const form = event.currentTarget;
-        const nombre = form.querySelector('input[name="nombre"]')?.value || '';
-        const telefono = form.querySelector('input[name="telefono"]')?.value || '';
-        const servicio = form.querySelector('select[name="servicio"]')?.value || '';
-        const fecha = form.querySelector('input[name="fecha"]')?.value || '';
-        const comentarios = form.querySelector('textarea[name="comentarios"]')?.value || '';
-
-        const texto = [
-          'Solicitud de agenda desde Galería',
-          'Nombre: ' + nombre,
-          'WhatsApp: ' + telefono,
-          'Servicio: ' + servicio,
-          'Fecha y hora: ' + fecha,
-          'Comentarios: ' + comentarios
-        ].join('\n');
-
-        const whatsappUrl = 'https://wa.me/+573213678042' + GALERIA_NUMBER + '?text=' + encodeURIComponent(texto);
-        const emailUrl = 'mailto:' + GALERIA_EMAIL + '?subject=' + encodeURIComponent('Agenda desde Galería - Peluquería Ler') + '&body=' + encodeURIComponent(texto);
-
-        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-        window.location.href = emailUrl;
-      });
-    </script>
+    });
+</script>
+    
 </body>
 </html>

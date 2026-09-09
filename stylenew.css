@@ -528,6 +528,8 @@ strong {
 }
 
 .feature-card h3,
+.feature-card h2,
+.feature-card h4,
 .service-card-page h3,
 .gallery-card h3,
 .contact-panel h3 {
@@ -945,12 +947,24 @@ strong {
 
     .hero-actions {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
     }
 
     .btn-primary,
     .btn-secondary {
-        width: 100%;
+        width: min(100%, 20rem);
+    }
+
+    .hero-media {
+        width: min(100%, 26rem);
+        min-height: 0;
+        margin: 0 auto;
+    }
+
+    .hero-media__photo {
+        min-height: 0;
+        aspect-ratio: 4 / 5;
+        border-radius: 24px;
     }
 
     .services-section,
@@ -1058,8 +1072,109 @@ strong {
 }
 
 @media (max-width: 700px) {
+    body {
+        background: #f5f8f3;
+    }
+
+    .site-header {
+        background: rgba(255, 255, 255, 0.98);
+        border-bottom: 1px solid rgba(0, 109, 39, 0.2);
+    }
+
+    .header-inner {
+        flex-direction: row;
+        padding: 0.7rem 1rem;
+    }
+
+    .brand {
+        justify-content: flex-start;
+        gap: 0.45rem;
+    }
+
+    .brand-logo-link img {
+        width: 40px;
+    }
+
+    .brand-text-link {
+        font-size: 0.95rem;
+    }
+
+    .nav-toggle {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+    }
+
     .hero-section {
-        padding: 3rem 1rem 2rem;
+        gap: 1.35rem;
+        padding: 2rem 1rem 2.5rem;
+    }
+
+    .hero-copy {
+        max-width: 32rem;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .eyebrow {
+        margin-bottom: 0.55rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+    }
+
+    .hero-copy h1 {
+        margin-bottom: 0.8rem;
+        font-size: clamp(2.15rem, 10vw, 3rem);
+        line-height: 0.98;
+    }
+
+    .hero-text {
+        max-width: 28rem;
+        margin: 0 auto 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .hero-actions {
+        align-items: stretch;
+        max-width: 20rem;
+        margin: 0 auto;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        padding: 0.8rem 1.2rem;
+        border-radius: 14px;
+    }
+
+    .hero-media {
+        width: min(100%, 25rem);
+        min-height: 0;
+        margin: 0 auto;
+    }
+
+    .hero-media__photo {
+        min-height: 0;
+        aspect-ratio: 4 / 5;
+        border-radius: 26px;
+        box-shadow: 0 18px 38px rgba(0, 109, 39, 0.16);
+    }
+
+    .feature-grid {
+        gap: 0.8rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .feature-card {
+        border-radius: 18px;
+        padding: 1rem 1.1rem;
+        box-shadow: 0 10px 24px rgba(0, 109, 39, 0.1);
+    }
+
+    .feature-card h2,
+    .feature-card h3,
+    .feature-card h4 {
+        font-size: 1rem;
     }
 
     .services-section,
@@ -1236,5 +1351,14 @@ strong {
 
     .mapa-iframe {
         height: 260px;
+    }
+}
+@media (max-width: 400px) {
+    .hero-media {
+        width: 100%;
+    }
+
+    .hero-media__photo {
+        aspect-ratio: 4 / 5;
     }
 }
