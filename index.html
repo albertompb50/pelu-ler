@@ -95,19 +95,31 @@
     </main>
 
     <div class="social-fixed-bubbles" role="complementary" aria-label="Redes sociales flotantes">
-        <a class="social-bubble instagram" href="https://www.instagram.com/la_peluqueria_ler/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-label="Instagram @la_peluqueria_ler">
-            <img src="img/IG.webp" alt="Instagram">
-        </a>
-        <a class="social-bubble tiktok" href="https://www.tiktok.com/@la.peluqueria.ler" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-label="TikTok @la.peluqueria.ler">
-            <img src="img/TT.webp" alt="TikTok">
-        </a>
-        <a class="social-bubble whatsapp" href="https://wa.me/+573213678042" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-label="WhatsApp +57 321 367 8042">
-            <img src="img/WA.webp" alt="WhatsApp">
-        </a>
+        <div class="social-fab-wrap">
+            <span class="social-fab-label">Redes</span>
+            <button class="social-fab" type="button" aria-expanded="false" aria-controls="socialBubbleList" aria-label="Abrir redes sociales">
+                <span aria-hidden="true">+</span>
+            </button>
+        </div>
+
+        <div class="social-bubble-list" id="socialBubbleList">
+            <a class="social-bubble instagram" href="https://www.instagram.com/la_peluqueria_ler/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-label="Instagram @la_peluqueria_ler">
+                <img src="img/IG.webp" alt="Instagram">
+            </a>
+            <a class="social-bubble tiktok" href="https://www.tiktok.com/@la.peluqueria.ler" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-label="TikTok @la.peluqueria.ler">
+                <img src="img/TT.webp" alt="TikTok">
+            </a>
+            <a class="social-bubble whatsapp" href="https://wa.me/+573208015273" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-label="WhatsApp +57 320 801 5273">
+                <img src="img/WA.webp" alt="WhatsApp">
+            </a>
+            <a class="social-bubble youtube" href="https://www.youtube.com/@LaPeluqueriaLer" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-label="YouTube @LaPeluqueriaLer">
+                <img src="img/YT.webp" alt="YouTube">
+            </a>
+        </div>
     </div>
 
     <footer class="site-footer">
-            <p>&copy; Teléfono +57 321 3678042 / Dirección: Calle 165 #8H-59, Usaquén, Bogotá, D.C., Colombia. </p>
+            <p>&copy; Teléfono +57 320 801 5273 / Dirección: Calle 165 #8H-59, Usaquén, Bogotá, D.C., Colombia. </p>
                 <p>2013-2026 La Peluquería Ler - Todos los derechos reservados.</p>
     </footer>
 
@@ -126,6 +138,32 @@
           mainNav.classList.remove('is-open');
           navToggle?.setAttribute('aria-expanded', 'false');
           navToggle?.setAttribute('aria-label', 'Abrir menú');
+        });
+      });
+
+      const socialFixedBubbles = document.querySelector('.social-fixed-bubbles');
+      const socialFab = document.querySelector('.social-fab');
+
+      socialFab?.addEventListener('click', function () {
+        const isOpen = socialFixedBubbles.classList.toggle('is-open');
+        socialFab.setAttribute('aria-expanded', String(isOpen));
+        socialFab.setAttribute('aria-label', isOpen ? 'Cerrar redes sociales' : 'Abrir redes sociales');
+      });
+
+      document.addEventListener('click', function (event) {
+        const clickedInside = socialFixedBubbles?.contains(event.target);
+        if (!clickedInside && socialFixedBubbles?.classList.contains('is-open')) {
+          socialFixedBubbles.classList.remove('is-open');
+          socialFab?.setAttribute('aria-expanded', 'false');
+          socialFab?.setAttribute('aria-label', 'Abrir redes sociales');
+        }
+      });
+
+      socialFixedBubbles?.querySelectorAll('.social-bubble').forEach(function (link) {
+        link.addEventListener('click', function () {
+          socialFixedBubbles.classList.remove('is-open');
+          socialFab?.setAttribute('aria-expanded', 'false');
+          socialFab?.setAttribute('aria-label', 'Abrir redes sociales');
         });
       });
 

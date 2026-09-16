@@ -47,7 +47,7 @@
         <h3>Acceso seguro</h3>
         <form id="gerenciaLogin" class="portal-form">
           <label>Correo institucional o WhatsApp
-            <input id="gerenciaUser" type="text" placeholder="lapeluquerialer13@gmail.com o 3213678042" required />
+            <input id="gerenciaUser" type="text" placeholder="lapeluquerialer13@gmail.com o 3208015273" required />
           </label>
           <label>Contraseña
             <input id="gerenciaPass" type="password" placeholder="Contraseña segura" required />
@@ -118,7 +118,7 @@
       mensajeGerencia.classList.remove('error', 'success');
       card.classList.remove('shake');
 
-      if ((userNormalizado === 'gerencia@peluquerialer.com' || userNormalizado === '3213678042') && pass === 'admin2026') {
+      if ((userNormalizado === 'gerencia@peluquerialer.com' || userNormalizado === '3208015273') && pass === 'admin2026') {
         mensajeGerencia.textContent = 'Acceso autorizado. Mostrando control financiero.';
         mensajeGerencia.classList.add('success');
         panelDemoGerencia.classList.add('hidden');
@@ -143,7 +143,7 @@
           lista.appendChild(li);
         });
       } else {
-        mensajeGerencia.textContent = 'Credenciales inválidas. Use lapeluquerialer13@gmail.com o 3213678042 / admin2026.';
+        mensajeGerencia.textContent = 'Credenciales inválidas. Use lapeluquerialer13@gmail.com o 3208015273 / admin2026.';
         mensajeGerencia.classList.add('error');
         card.classList.add('shake');
       }
