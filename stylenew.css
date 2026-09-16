@@ -72,6 +72,7 @@ button {
     75% { transform: translateX(-3px); }
 }
 
+/* Este es mi encabezado y mi navegacion */
 .site-header {
     position: sticky;
     top: 0;
@@ -153,10 +154,6 @@ button {
 .main-nav a:hover,
 .main-nav a:focus {
     animation: pulseGlow 1.1s ease infinite;
-}
-
-.main-nav a:hover,
-.main-nav a:focus {
     background: linear-gradient(135deg, var(--primary-dark) 0%, #008d35 100%);
     color: #ffffff;
     transform: translateY(-2px);
@@ -169,6 +166,7 @@ button {
     padding: 0 1.25rem;
 }
 
+/* Estas son las secciones de mi pagina principal */
 .hero-section {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
@@ -500,6 +498,7 @@ strong {
     font-size: 1rem;
 }
 
+/* Estos son los componentes compartidos de mis paginas */
 .feature-grid,
 .service-grid,
 .gallery-grid,
@@ -615,10 +614,7 @@ strong {
     display: grid;
     height: 100%;
     width: 100%;
- 
     padding: 2rem 1.25rem 3rem;
-    position: center;
-    
 }
 
 .mini-list {
@@ -784,12 +780,6 @@ strong {
     margin-top: 0.25rem;
 }
 
-.brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.85rem;
-}
-
 .brand-logo-link img {
     width: 52px;
     height: auto;
@@ -801,6 +791,7 @@ strong {
     font-size: 1.05rem;
 }
 
+/* Este es el diseño para pantallas grandes */
 @media (min-width: 981px) {
     .page-shell {
         max-width: 1180px;
@@ -901,6 +892,7 @@ strong {
     }
 }
 
+/* Este es el diseño adaptable */
 @media (max-width: 1100px) {
     .hero-section,
     .services-section {
@@ -1181,17 +1173,19 @@ strong {
         padding: 2rem 1rem 3rem;
     }
 }
+
+/* Estas son mis burbujas fijas de redes sociales */
 .social-bubble {
-  width: 56px;
-  height: 56px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 18px 38px rgba(17, 17, 17, 0.16);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
+        width: 56px;
+        height: 56px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 18px 38px rgba(17, 17, 17, 0.16);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        position: relative;
 }
 
 .social-bubble:hover,
@@ -1264,13 +1258,14 @@ strong {
 
 @media (max-width: 768px) {
     .social-fixed-bubbles {
-    top: auto;
-    bottom: 1rem;
-    right: 1rem;
-    align-items: flex-end;
-  }
+                top: auto;
+                bottom: 1rem;
+                right: 1rem;
+                align-items: flex-end;
+        }
 }
 
+/* Este es mi pie de pagina y mi mapa */
 .site-footer {
     background: #f9f9f9;
     border-top: 2px solid var(--primary-dark);
@@ -1306,6 +1301,7 @@ strong {
         height: 260px;
     }
 }
+
 @media (max-width: 400px) {
     .hero-media {
         width: 100%;
