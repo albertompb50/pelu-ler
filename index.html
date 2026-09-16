@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="icon" type="image/png" href="img/logosinfondo.webp">
+    <link rel="icon" type="image/png" href="img/logo.webp">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Peluquería Ler </title>
@@ -94,27 +94,21 @@
         </section>
     </main>
 
-    <div class="social-sidebar social-sidebar--open" id="socialSidebar" role="complementary" aria-label="Barra lateral de redes sociales">
-        <button type="button" class="social-sidebar__toggle" id="socialSidebarToggle" aria-expanded="true" aria-label="Ocultar redes sociales">
-            <span>Redes</span>
-            <span class="social-sidebar__chevron"></span>
-        </button>
-
-        <div class="social-fixed-bubbles"  role="complementary" aria-label="Redes sociales flotantes">
-            <a class="social-bubble instagram" href="https://instagram.com/lapeluquerialer" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-label="Instagram @lapeluquerialer">
-                <img src="img/IG.webp" alt="Instagram">
-            </a>
-            <a class="social-bubble tiktok" href="https://www.tiktok.com/@.la_pelu_ler" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-label="TikTok @.la_pelu_ler">
-                <img src="img/TT.webp" alt="TikTok">
-            </a>
-            <a class="social-bubble whatsapp" href="https://wa.me/+573213678042" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-label="WhatsApp +57 321 367 8042">
-                <img src="img/WA.webp" alt="WhatsApp">
-            </a>
-        </div>
+    <div class="social-fixed-bubbles" role="complementary" aria-label="Redes sociales flotantes">
+        <a class="social-bubble instagram" href="https://www.instagram.com/la_peluqueria_ler/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-label="Instagram @la_peluqueria_ler">
+            <img src="img/IG.webp" alt="Instagram">
+        </a>
+        <a class="social-bubble tiktok" href="https://www.tiktok.com/@la.peluqueria.ler" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-label="TikTok @la.peluqueria.ler">
+            <img src="img/TT.webp" alt="TikTok">
+        </a>
+        <a class="social-bubble whatsapp" href="https://wa.me/+573213678042" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-label="WhatsApp +57 321 367 8042">
+            <img src="img/WA.webp" alt="WhatsApp">
+        </a>
     </div>
 
     <footer class="site-footer">
-            <p>&copy; 2013-2026 La Peluquería Ler. Todos los derechos reservados.</p>
+            <p>&copy; Teléfono +57 321 3678042 / Dirección: Calle 165 #8H-59, Usaquén, Bogotá, D.C., Colombia. </p>
+                <p>2013-2026 La Peluquería Ler - Todos los derechos reservados.</p>
     </footer>
 
     <script>
@@ -135,21 +129,6 @@
         });
       });
 
-      const socialSidebar = document.getElementById('socialSidebar');
-      const socialSidebarToggle = document.getElementById('socialSidebarToggle');
-
-      socialSidebarToggle?.addEventListener('click', function () {
-        socialSidebar?.classList.toggle('social-sidebar--collapsed');
-
-        const collapsed = socialSidebar?.classList.contains('social-sidebar--collapsed');
-        const chevron = socialSidebarToggle.querySelector('.social-sidebar__chevron');
-
-        socialSidebarToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-        socialSidebarToggle.setAttribute('aria-label', collapsed ? 'Mostrar redes sociales' : 'Ocultar redes sociales');
-        if (chevron) {
-          chevron.textContent = collapsed ? '›' : '‹';
-        }
-      });
     </script>
 </body>
 </html>
