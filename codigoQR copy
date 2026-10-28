@@ -1,0 +1,20 @@
+// npm install qrcode
+
+const QRCode = require('qrcode');
+
+const URL = 'https://drive.google.com/file/d/1Q09jKlQAaiC3I0zbyMzoTc1dhK1s_h4j/view?usp=sharing';
+
+QRCode.toFile(
+  'qr_peluqueria_ler_video.png',
+  URL,
+  {
+    errorCorrectionLevel: 'H',
+    width: 1200,
+    margin: 4,
+    color: { dark: '#000000', light: '#FFFFFF' }
+  },
+  (err) => {
+    if (err) throw err;
+    console.log('QR generado: qr_peluqueria_ler_video.png');
+  }
+);

@@ -58,7 +58,7 @@
             <form id="agendaForm" class="booking-card" onsubmit="return false;">
                 <label>
                     Nombre completo
-                    <input type="text" name="text" placeholder="Tu nombre" maxlength="60" required>
+                    <input type="text" name="text" placeholder="Tu nombre" maxlength="60" pattern="[\p{L} ]+" title="Escribe solo letras y espacios." required>
                 </label>
                 <label>
                     Teléfono Celular (WhatsApp)
@@ -123,6 +123,11 @@
       emailjs.init('Db9nrcYM-g3Tl3d8i');
 
       const agendaForm = document.getElementById('agendaForm');
+      const nombreInput = agendaForm?.querySelector('input[name="text"]');
+
+      nombreInput?.addEventListener('input', function () {
+        this.value = this.value.replace(/[^\p{L} ]/gu, '');
+      });
 
       agendaForm?.addEventListener('submit', function (event) {
         event.preventDefault();
