@@ -1,0 +1,20 @@
+// npm install qrcode
+
+const QRCode = require('qrcode');
+
+const URL = 'https://pelu-ler-896l.vercel.app/';
+
+QRCode.toFile(
+  'qr_peluqueria_ler.png',
+  URL,
+  {
+    errorCorrectionLevel: 'H',
+    width: 1200,
+    margin: 4,
+    color: { dark: '#000000', light: '#FFFFFF' }
+  },
+  (err) => {
+    if (err) throw err;
+    console.log('QR generado: qr_peluqueria_ler.png');
+  }
+);

@@ -1,0 +1,29 @@
+# 1. Instala la librería (una sola vez)
+# pip install "qrcode[pil]"
+
+try:
+    import qrcode # pyright: ignore[reportMissingModuleSource]
+except ModuleNotFoundError as exc:
+    if exc.name != "qrcode":
+        raise
+    raise SystemExit(
+        'Falta la dependencia "qrcode". Instálala con: '
+        'python -m pip install "qrcode[pil]"'
+    ) from exc
+
+URL = "https://pelu-ler-896l.vercel.app/"
+
+qr = qrcode.QRCode(
+    version=None,                              # None = ajusta el tamaño automáticamente
+    error_correction=qrcode.constants.ERROR_CORRECT_H,  # alta tolerancia a daños
+    box_size=12,                               # píxeles por cuadro (más = más resolución)
+    border=4,                                  # margen blanco obligatorio
+)
+
+qr.add_data(URL)
+qr.make(fit=True)
+
+img = qr.make_image(fill_color="black", back_color="white")
+img.save("qr_peluqueria_ler.png")
+
+print("QR generado: qr_peluqueria_ler.png")
